@@ -1,0 +1,17 @@
+[Unit]
+Description=HyperStake Daemon
+After=network.target
+
+[Service]
+Type=simple
+
+User=root
+
+WorkingDirectory=/wallets/HyperStake/src
+
+ExecStart=/wallets/HyperStake/src/hyperstaked
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
