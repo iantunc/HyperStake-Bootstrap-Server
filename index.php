@@ -73,26 +73,22 @@ HyperStake Bootstrap Server
    </br>
 </br>
 </br>
-<!-- Change /your/path/to/bootstrap/ to the actual absolute path -->
 
-<a href="/your/path/to/bootstrap/bootstrap.zip"> Get bootstrap file (updated hourly)</a>
+<a href="bootstrap.zip"> Get bootstrap file (updated hourly)</a>
 
 <?php
 
-// Change /your/path/to/jsonRPCClient/ to the actual absolute path
+ require_once(__DIR__.'/jsonRPCClient.php');
 
-require_once('/your/path/to/jsonRPCClient/jsonRPCClient.php');
-    $load = true;
+    try {
 
-    // Change yourRPCUser, yourRPCPass, yourIp, yourRPCPort to your actual data
+     // Change yourRPCUser, yourRPCPass, yourIp, yourRPCPort to your actual data
 
 $bitcoin = new jsonRPCClient('http://yourRPCUser:yourRPCPass@yourIp:yourRPCPort/');
 
-  
-    try {
-    
     $info = $bitcoin->getinfo();
     $hash = $bitcoin->getblockhash($info["blocks"]);	
+
 echo '<br>';
 echo '<br>';
 echo '<span style="font-size: 70%">Current top block: ' . '<a href="http://www.presstab.pw/phpexplorer/HYP/block.php?height=' . $info["blocks"]  . '">' . $info["blocks"] . " (" . substr($hash, 0, 5) . "..." . substr($hash, -5) . ")</a></span></span>";
@@ -101,7 +97,6 @@ echo '<span style="font-size: 70%">Current top block: ' . '<a href="http://www.p
         
 //        echo "Server is down for maintenance";
 
-        $load = false;
     }
 
  ?>
